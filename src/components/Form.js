@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/Form.css';
 
-const fieldTypes = [
-  { label: 'Text Input', value: 'text' },
-  { label: 'Radio Button', value: 'radio' },
-  { label: 'Checkbox', value: 'checkbox' },
-  { label: 'Select', value: 'select' },
-  { label: 'Textarea', value: 'textarea' }
-];
-
 export const Form = ({ fields = [] }) => {
   const [formData, setFormData] = useState({});
 
@@ -33,13 +25,13 @@ export const Form = ({ fields = [] }) => {
 
 const renderField = (field, formData, handleChange) => {
   const value = formData[field.name] || '';
-  
+
   switch (field.type) {
     case 'text':
       return (
-        <input 
-          type="text" 
-          placeholder={field.placeholder || ''} 
+        <input
+          type="text"
+          placeholder={field.placeholder || ''}
           value={value}
           onChange={(e) => handleChange(field.name, e.target.value)}
         />
@@ -47,8 +39,8 @@ const renderField = (field, formData, handleChange) => {
     case 'radio':
       return field.options?.map((opt, i) => (
         <div key={i}>
-          <input 
-            type="radio" 
+          <input
+            type="radio"
             name={field.name}
             value={opt.value}
             checked={value === opt.value}
@@ -58,7 +50,7 @@ const renderField = (field, formData, handleChange) => {
       ));
     case 'checkbox':
       return (
-        <input 
+        <input
           type="checkbox"
           checked={value}
           onChange={(e) => handleChange(field.name, e.target.checked)}
@@ -66,7 +58,7 @@ const renderField = (field, formData, handleChange) => {
       );
     case 'select':
       return (
-        <select 
+        <select
           value={value}
           onChange={(e) => handleChange(field.name, e.target.value)}
         >
@@ -78,8 +70,8 @@ const renderField = (field, formData, handleChange) => {
       );
     case 'textarea':
       return (
-        <textarea 
-          placeholder={field.placeholder || ''} 
+        <textarea
+          placeholder={field.placeholder || ''}
           value={value}
           onChange={(e) => handleChange(field.name, e.target.value)}
         />
