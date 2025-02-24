@@ -7,9 +7,8 @@ export default defineConfig({
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   esbuild: {
-    // Ensure .js files with JSX are handled properly
     loader: "jsx",
-    include: [/src\/.*\.[jt]sx?$/], // Ensure it applies to JS and JSX files
+    include: [/src\/.*\.[jt]sx?$/],
     exclude: [],
   },
 })
